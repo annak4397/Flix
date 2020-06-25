@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) UIRefreshControl *refrereshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -29,6 +30,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self.activityIndicator startAnimating];
     [self fetchMovies];
     
     self.refrereshControl = [[UIRefreshControl alloc] init];
@@ -47,15 +49,17 @@
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                
-               NSLog(@"%@", dataDictionary);
+               //NSLog(@"%@", dataDictionary);
                
                self.movies = dataDictionary[@"results"];
                
-               for(NSDictionary *movie in self.movies){
+               /*for(NSDictionary *movie in self.movies){
                    NSLog(@"%@" , movie[@"title"]);
-               }
+               }*/
                [self.tableView reloadData];
            }
+        //[NSThread sleepForTimeInterval: 2.0];
+        [self.activityIndicator stopAnimating];
         [self.refrereshControl endRefreshing];
        }];
     [task resume];
