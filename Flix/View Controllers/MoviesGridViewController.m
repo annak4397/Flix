@@ -11,8 +11,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesGridViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MoviesGridViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
@@ -75,15 +76,13 @@ static NSString * const reuseIdentifier = @"Cell";
                //NSLog(@"%@", dataDictionary);
                
                self.movies = dataDictionary[@"results"];
+               self.filteredMovies = self.movies;
                
                /*for(NSDictionary *movie in self.movies){
                    NSLog(@"%@" , movie[@"title"]);
                }*/
                [self.collectionView reloadData];
            }
-        //[NSThread sleepForTimeInterval: 2.0];
-        //[self.activityIndicator stopAnimating];
-        //[self.refrereshControl endRefreshing];
        }];
     [task resume];
 }
@@ -107,12 +106,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of items
-    return self.movies.count;
+    return self.filteredMovies.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
-    NSDictionary *movie = self.movies[indexPath.item];
+    NSDictionary *movie = self.filteredMovies[indexPath.item];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
@@ -124,6 +123,27 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    UICollectionReusableView *searchView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SearchBar" forIndexPath:indexPath];
+    
+    return searchView;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {return [evaluatedObject[@"title"] containsString:searchText];}]; 
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+
+        
+    }
+    else {
+        self.filteredMovies = self.movies;
+    }
+    
+    [self.collectionView reloadData];
 }
 
 
