@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="796"/>
+            <point key="canvasLocation" x="1051" y="858"/>
         </scene>
         <!--Movies Grid View Controller-->
         <scene sceneID="PZT-QW-dTg">
@@ -112,6 +112,7 @@
                                         <size key="customSize" width="131" height="191"/>
                                         <connections>
                                             <outlet property="posterView" destination="fBf-mm-jV8" id="75r-lH-hlj"/>
+                                            <segue destination="1sd-oc-cCx" kind="show" id="wGH-5X-gLD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -181,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIi-HE-tOY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="110.49107142857143"/>
+            <point key="canvasLocation" x="1051" y="110"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="foO-vf-OYt">
@@ -243,7 +244,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQ4-9y-r3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="1489"/>
+            <point key="canvasLocation" x="1051" y="1590"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wGH-5X-gLD"/>
+    </inferredMetricsTieBreakers>
 </document>
