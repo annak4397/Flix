@@ -49,22 +49,17 @@ static NSString * const reuseIdentifier = @"Cell";
                       message:@"The internet connections appears to be offline."
                preferredStyle:(UIAlertControllerStyleAlert)];
                // create a cancel action
-               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                                   style:UIAlertActionStyleCancel
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
-                                                                        // handle cancel response here. Doing nothing will dismiss the view.
-                                                                 }];
+               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+               
                // add the cancel action to the alertController
                [alert addAction:cancelAction];
                
                // create an OK action
-               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * _Nonnull action) {
-                   [self fetchMovies];
-                                                                }];
+               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+               {[self fetchMovies];}];
                // add the OK action to the alert controller
                [alert addAction:tryAgainAction];
+               
                [self presentViewController:alert animated:YES completion:^{
                    // optional code for what happens after the alert controller has finished presenting
                }];
@@ -74,14 +69,9 @@ static NSString * const reuseIdentifier = @"Cell";
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                
-               //NSLog(@"%@", dataDictionary);
-               
                self.movies = dataDictionary[@"results"];
                self.filteredMovies = self.movies;
                
-               /*for(NSDictionary *movie in self.movies){
-                   NSLog(@"%@" , movie[@"title"]);
-               }*/
                [self.collectionView reloadData];
            }
        }];
