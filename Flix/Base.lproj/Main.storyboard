@@ -20,9 +20,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="GfQ-vX-1jJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="181" id="cQ4-QL-9JZ" customClass="MovieCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="181"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cQ4-QL-9JZ" id="6yR-xF-ddm">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
@@ -47,6 +52,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELj-Vy-B5E">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -70,12 +79,13 @@
                     <navigationItem key="navigationItem" title="Movies" id="HKX-ez-0th"/>
                     <connections>
                         <outlet property="activityIndicator" destination="5DF-9v-UWf" id="DBh-wX-Dhw"/>
+                        <outlet property="searchBar" destination="GfQ-vX-1jJ" id="bgI-up-67d"/>
                         <outlet property="tableView" destination="CsD-Tm-7H4" id="GBu-k3-DO5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="858"/>
+            <point key="canvasLocation" x="1050.7246376811595" y="857.8125"/>
         </scene>
         <!--Movies Grid View Controller-->
         <scene sceneID="PZT-QW-dTg">
@@ -91,13 +101,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2BZ-5S-lhy">
                                     <size key="itemSize" width="131" height="191"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="MovieCollectionViewCell" id="Rkc-VG-Khu" customClass="MovieCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="50" width="131" height="191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="191"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Kah-Sf-Fis">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="191"/>
@@ -116,34 +126,30 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchBar" id="MGr-C0-KtT" customClass="SearchBarViewCollectionReusableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hy9-Vf-kjm">
-                                            <rect key="frame" x="0.0" y="3" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="C9R-bG-Gii" id="M7a-bn-WWb"/>
-                                            </connections>
-                                        </searchBar>
-                                    </subviews>
-                                    <connections>
-                                        <outlet property="searchBar" destination="hy9-Vf-kjm" id="xlj-SL-Hii"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="H7m-nr-4yX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rGO-YI-sZa"/>
+                    <navigationItem key="navigationItem" id="rGO-YI-sZa">
+                        <connections>
+                            <outlet property="titleView" destination="zdH-Y0-74N" id="rDq-vS-O11"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="0ln-u7-dyD" id="Vc0-1W-EbU"/>
+                        <outlet property="searchBar" destination="zdH-Y0-74N" id="3Sj-Ji-9oT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Is-iv-JER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="zdH-Y0-74N">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="C9R-bG-Gii" id="wME-gm-l9F"/>
+                    </connections>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="2439.130434782609" y="820.98214285714278"/>
         </scene>
@@ -242,6 +248,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo5-GD-wjD">
+                                        <rect key="frame" x="338" y="349" width="46" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Trailer"/>
+                                        <connections>
+                                            <segue destination="LeF-bz-ABh" kind="presentation" id="2ni-Ob-xX1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="uvv-9Q-g2f"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="oqu-i6-aUm"/>
@@ -261,10 +275,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQ4-9y-r3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="1590"/>
+            <point key="canvasLocation" x="1050.7246376811595" y="1589.7321428571429"/>
+        </scene>
+        <!--Movie Trailer View Controller-->
+        <scene sceneID="chH-yn-l91">
+            <objects>
+                <viewController id="LeF-bz-ABh" customClass="MovieTrailerViewController" sceneMemberID="viewController">
+                    <wkWebView key="view" contentMode="scaleToFill" id="MNJ-UR-Mjv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                    </wkWebView>
+                    <connections>
+                        <outlet property="trailerWebView" destination="MNJ-UR-Mjv" id="kLY-dA-HeB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9C-oY-yks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="1590"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wGH-5X-gLD"/>
+        <segue reference="03F-lG-X2B"/>
     </inferredMetricsTieBreakers>
 </document>

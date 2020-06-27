@@ -1,5 +1,5 @@
 //
-//  SearchBarViewCollectionReusableView.h
+//  MovieTrailerViewController.h
 //  Flix
 //
 //  Created by Anna Kuznetsova on 6/26/20.
@@ -10,9 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SearchBarViewCollectionReusableView : UICollectionReusableView
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@interface MovieTrailerViewController : UIViewController
+@property (nonatomic, weak) NSString *youTubeString;
 @end
 
 NS_ASSUME_NONNULL_END
