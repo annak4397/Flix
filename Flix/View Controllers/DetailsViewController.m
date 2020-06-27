@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) NSString *fullYoutubeURLString;
 
+
 @end
 
 @implementation DetailsViewController
