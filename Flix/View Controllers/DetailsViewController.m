@@ -32,7 +32,14 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     [self.posterView setImageWithURL:posterURL];
     
-    NSString *backdropURLString = self.movie[@"backdrop_path"];
+    NSString *backdropURLString;
+    if(![self.movie[@"backdrop_path"] isEqual:[NSNull null]]){
+        backdropURLString = self.movie[@"backdrop_path"];
+    }
+    else{
+        backdropURLString = posterURLString;
+    }
+    
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
     
     NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
@@ -67,9 +74,15 @@
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                
                NSArray *result = dataDictionary[@"results"];
-               NSString *movieKey = result[0][@"key"];
-               NSString *urlStart = @"https://www.youtube.com/watch?v=";
-               self.fullYoutubeURLString = [urlStart stringByAppendingString:movieKey];
+               if([result count] == 0)
+               {
+                   NSLog(@"empty");
+                   self.fullYoutubeURLString = @"https://www.youtube.com";
+               }else{
+                   NSString *movieKey = result[0][@"key"];
+                   NSString *urlStart = @"https://www.youtube.com/watch?v=";
+                   self.fullYoutubeURLString = [urlStart stringByAppendingString:movieKey];
+               }
                
         }
        }];

@@ -114,6 +114,9 @@
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
     
+    cell.backgroundView.image = nil;
+    [cell.backgroundView setImageWithURL:posterURL];
+    
     return cell;
 }
 
